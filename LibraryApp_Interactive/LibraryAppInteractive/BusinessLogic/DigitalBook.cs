@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BusinessLogic
+{
+    internal class DigitalBook : Book
+    {
+        public DigitalBook()
+        {
+        }
+    }
+}
