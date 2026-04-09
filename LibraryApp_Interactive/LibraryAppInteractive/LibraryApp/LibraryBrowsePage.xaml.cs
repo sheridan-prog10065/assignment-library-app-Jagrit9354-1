@@ -3,6 +3,7 @@ namespace LibraryAppInteractive;
 
 public partial class LibraryBrowsePage : ContentPage
 {
+    private Library _library;
     public LibraryBrowsePage()
     {   
         InitializeComponent();
