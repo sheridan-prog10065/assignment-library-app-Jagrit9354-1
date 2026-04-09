@@ -19,6 +19,12 @@ namespace BusinessLogic
         {
             _book = book;
             _libID = libID;
+            _status = AssetStatus.Available;
+        }
+
+        public override string ToString()
+        {
+            return $"{_libID}: {_status}";
         }
 
         public int LibID 

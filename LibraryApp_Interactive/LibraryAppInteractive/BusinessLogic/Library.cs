@@ -18,11 +18,41 @@ namespace BusinessLogic
             //List of books initialised
             _bookList = new List<Book>();
             _libGeneratorSeed = DEFAULT_LIBID_START;
+            //Generate default books
+            CreateDefaultBooks();
+        }
+
+        // Library.cs - read only, nobody can replace the list from outside
+        public IEnumerable<Book> BookList
+        {
+            get { return _bookList; }
         }
 
         public void CreateDefaultBooks()
         {
-            //TODO: Create hardcoded book objects
+            // create a paper book
+            PaperBook paperBook = new PaperBook("Lord of the Rings", "978-0261102385");
+            paperBook.Authors.Add("J.R.R. Tolkien");
+
+            for (int i = 0; i < 5; i++)
+            {
+                LibraryAsset asset = new LibraryAsset(paperBook, DetermineLibID());
+                asset.Status = AssetStatus.Available;
+                paperBook.Assets.Add(asset);
+            }
+            _bookList.Add(paperBook);
+
+            // create a digital book
+            DigitalBook digitalBook = new DigitalBook("Harry Potter", "978-1408898659");
+            digitalBook.Authors.Add("J.K. Rowling");
+
+            for (int i = 0; i < 5; i++)
+            {
+                LibraryAsset asset = new LibraryAsset(digitalBook, DetermineLibID());
+                asset.Status = AssetStatus.Available;
+                digitalBook.Assets.Add(asset);
+            }
+            _bookList.Add(digitalBook);
         }
 
         public int DetermineLibID() // returns int
@@ -71,18 +101,30 @@ namespace BusinessLogic
 
         }
 
-        public void FindBookByName(string bookName) 
+        public Book FindBookByName(string bookName) 
         {
-            //TODO: Search a book from the collection of books.
-
             //Compare string of bookname to find the book object.
+            foreach(Book curBook in _bookList) 
+            {
+                if(curBook.Name == bookName) 
+                {
+                    return curBook;
+                }
+            }
+            return null;
         }
 
-        public void FindBookByISBN(string bookISBN) 
+        public Book FindBookByISBN(string bookISBN) 
         {
-            //TODO: Search a book from the collection.
-
             //Compare string of bookISBN to find the book object.
+            foreach(Book curBook in _bookList) 
+            {
+                if( curBook.ISBN == bookISBN) 
+                {
+                    return curBook;
+                }
+            }
+            return null;
         }
     }
 

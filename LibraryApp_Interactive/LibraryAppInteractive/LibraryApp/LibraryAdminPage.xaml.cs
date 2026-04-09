@@ -10,6 +10,7 @@ namespace LibraryAppInteractive;
 public partial class LibraryAdminPage : ContentPage
 {
     private Library _library;
+    private Book _selectedBook;
     public LibraryAdminPage()
     {        
         InitializeComponent();
@@ -56,14 +57,31 @@ public partial class LibraryAdminPage : ContentPage
         
 
         _library.RegisterBook(bookName, bookISBN, authorArray, bookType, noOfCopies);
+
+        // show success message
+        DisplayAlertAsync("Success", $"{bookName} has been registered", "OK");
+
+        // clear the fields
+        _txtBookName.Text = string.Empty;
+        _txtISBN.Text = string.Empty;
+        _txtAuthor.Text = string.Empty;
+        _txtCopies.Text = string.Empty;
+        _pckBookType.SelectedIndex = -1;
     }
 
     private void OnDisplayBookAssets(object sender, EventArgs e)
     {
+        List<LibraryAsset> allAssets = new List<LibraryAsset>();
 
+        foreach (Book book in _library.BookList)
+        {
+            foreach (LibraryAsset asset in book.Assets)
+            {
+                allAssets.Add(asset);
+            }
+        }
+
+        _lstBookInventory.ItemsSource = allAssets;
     }
 
-    //TODO: On register book method
-
-    //TODO: On display book assets method
 }
