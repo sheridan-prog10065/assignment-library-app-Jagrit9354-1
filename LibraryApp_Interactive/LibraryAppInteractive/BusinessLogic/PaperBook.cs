@@ -12,12 +12,12 @@ namespace BusinessLogic
         {
         }
 
-        public void BorrowBook() 
+        public override void BorrowBook() 
         {
             //TODO: Return a library asset object
         }
 
-        public void ReturnBook(int libID) 
+        public override void ReturnBook(int libID) 
         {
             //Return: Timespan, int, decimal
         }

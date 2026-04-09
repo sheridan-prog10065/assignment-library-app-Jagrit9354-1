@@ -7,6 +7,7 @@
     <ContentPage.Content>
         <Label Text="Library Admin page for the Interactive Library App"
                HorizontalOptions="Center"
-               VerticalOptions="Center"/>         
+               VerticalOptions="Center"/>      
+        
     </ContentPage.Content>
 </ContentPage>

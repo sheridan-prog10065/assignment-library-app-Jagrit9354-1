@@ -24,12 +24,12 @@ namespace BusinessLogic
             //TODO: determine the loan license
         }
 
-        public void BorrowBook() 
+        public override void BorrowBook() 
         {
             //TODO: Override the borrowing functionality for a book
         }
 
-        public void ReturnBook(int libID) 
+        public override void ReturnBook(int libID) 
         {
             //TODO: return: timespan, int, decimal
         }

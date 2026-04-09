@@ -72,12 +72,12 @@ namespace BusinessLogic
             //TODO: Check if the book object is available in the collection
         }
 
-        public void BorrowBook()
+        public virtual void BorrowBook()
         {
             //TODO: Return a library asset object
         }
 
-        public void ReturnBook(int libID)
+        public virtual void ReturnBook(int libID)
         {
             //TODO: return (TimeSpan, int, decimal)
         }
