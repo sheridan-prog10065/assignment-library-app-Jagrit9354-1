@@ -9,9 +9,18 @@ public partial class LibraryBrowsePage : ContentPage
         InitializeComponent();
     }
 
-    //TODO: On search book method
+    private void OnSearchBook(object sender, EventArgs e)
+    {
 
-    //TODO: On borrow book method
+    }
 
-    //TODO: On return book method
+    private void OnBorrowBook(object sender, EventArgs e)
+    {
+
+    }
+
+    private void OnReturnBook(object sender, EventArgs e)
+    {
+
+    }
 }
