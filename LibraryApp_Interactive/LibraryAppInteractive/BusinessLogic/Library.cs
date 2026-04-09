@@ -12,13 +12,10 @@ namespace BusinessLogic
         private int _libGeneratorSeed;
         //Default start ID value
         private const int DEFAULT_LIBID_START = 100;
-        public Library(int id)
+        public Library()
         {
             //List of books initialised
             _bookList = new List<Book>();
-
-            //Initializing library Id
-            _libGeneratorSeed = id;
         }
 
         public void CreateDefaultBooks()

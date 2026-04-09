@@ -1,4 +1,5 @@
-﻿namespace LibraryAppInteractive;
+﻿using BusinessLogic;
+namespace LibraryAppInteractive;
 
 public partial class LibraryBrowsePage : ContentPage
 {
@@ -6,4 +7,10 @@ public partial class LibraryBrowsePage : ContentPage
     {   
         InitializeComponent();
     }
+
+    //TODO: On search book method
+
+    //TODO: On borrow book method
+
+    //TODO: On return book method
 }

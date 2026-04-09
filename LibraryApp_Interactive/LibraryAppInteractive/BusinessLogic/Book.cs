@@ -14,12 +14,12 @@ namespace BusinessLogic
         private List<string> _bookAuthorList;
         //List of library assets
         private List<LibraryAsset> _libAssetList;
-        public Book(string bookName, string bookISBN, List<string> bookAuthorList, List<LibraryAsset> libAssetList)
+        public Book(string bookName, string bookISBN)
         {
             _bookName = bookName;
             _bookISBN = bookISBN;
-            _bookAuthorList = bookAuthorList;
-            _libAssetList = libAssetList;
+            _bookAuthorList = new List<string>();
+            _libAssetList = new List<LibraryAsset>();
         }
 
         public string Name 

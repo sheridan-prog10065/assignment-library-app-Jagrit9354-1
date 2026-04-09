@@ -6,5 +6,9 @@ namespace BusinessLogic
 {
     public enum AssetStatus
     {
+        NotAvailable,
+        Available,
+        Loaned,
+        Reserved
     }
 }
