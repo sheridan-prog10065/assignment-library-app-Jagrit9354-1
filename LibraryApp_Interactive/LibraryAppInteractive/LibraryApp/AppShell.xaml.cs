@@ -1,4 +1,4 @@
-﻿using BusinessLogic;
+﻿
 namespace LibraryAppInteractive;
 
 public partial class AppShell : Shell
