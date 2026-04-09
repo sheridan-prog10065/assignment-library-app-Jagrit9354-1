@@ -7,6 +7,7 @@ public partial class LibraryBrowsePage : ContentPage
     public LibraryBrowsePage()
     {   
         InitializeComponent();
+        _library = new Library();
     }
 
     private void OnSearchBook(object sender, EventArgs e)

@@ -12,10 +12,8 @@ namespace BusinessLogic
         private float _latePenaltyPerDay;
 
 
-        public DigitalBook(string bookName, string bookISBN, int maxBorrowDays, float latePenaltyPerDay) : base(bookName, bookISBN)
+        public DigitalBook(string bookName, string bookISBN) : base(bookName, bookISBN)
         {
-            _maxBorrowDays = maxBorrowDays;
-            _latePenaltyPerDay = latePenaltyPerDay;
 
         }
 

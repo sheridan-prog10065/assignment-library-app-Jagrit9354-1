@@ -55,7 +55,7 @@ namespace BusinessLogic
             }
         }
 
-        public IEnumerable<LibraryAsset> Assets
+        public List<LibraryAsset> Assets
         {
             get { return _libAssetList; }
             set

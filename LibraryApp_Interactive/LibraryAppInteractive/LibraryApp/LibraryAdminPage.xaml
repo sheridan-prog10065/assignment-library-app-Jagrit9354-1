@@ -28,7 +28,6 @@
                     <Picker.Items>
                         <x:String>Paper</x:String>
                         <x:String>Digital</x:String>
-                        <x:String>Audio</x:String>
                     </Picker.Items>
                 </Picker>
 
