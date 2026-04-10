@@ -6,10 +6,10 @@ public partial class LibraryBrowsePage : ContentPage
 {
     private Library _library;
     private Book _selectedBook;
-    public LibraryBrowsePage()
+    public LibraryBrowsePage(Library library)
     {   
         InitializeComponent();
-        _library = new Library();
+        _library = library;
     }
 
     private void OnSearchBook(object sender, EventArgs e)

@@ -11,10 +11,10 @@ public partial class LibraryAdminPage : ContentPage
 {
     private Library _library;
     private Book _selectedBook;
-    public LibraryAdminPage()
+    public LibraryAdminPage(Library library)
     {        
         InitializeComponent();
-        _library = new Library();
+        _library = library;
     }
 
     private void OnRegisterBook(object sender, EventArgs e)
@@ -38,8 +38,7 @@ public partial class LibraryAdminPage : ContentPage
             return;
         }
 
-        string[] authorArray = new string[20];
-        authorArray.Append(authorName);
+        string[] authorArray = new string[] { authorName };
 
         if (!Enum.TryParse(bookTypeStr, true, out BookType bookType))
         {

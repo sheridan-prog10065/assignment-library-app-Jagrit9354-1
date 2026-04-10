@@ -19,6 +19,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<Library>();
         builder.Services.AddSingleton<LibraryAdminPage>();
         builder.Services.AddSingleton<LibraryBrowsePage>();
+        builder.Services.AddSingleton<AppShell>();
 
         return builder.Build();
     }

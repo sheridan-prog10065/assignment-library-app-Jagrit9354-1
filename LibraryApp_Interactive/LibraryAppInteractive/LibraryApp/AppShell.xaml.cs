@@ -3,7 +3,7 @@ namespace LibraryAppInteractive;
 
 public partial class AppShell : Shell
 {
-    public AppShell()
+    public AppShell(LibraryBrowsePage browsePage, LibraryAdminPage adminPage)
     {
         InitializeComponent();
     }
