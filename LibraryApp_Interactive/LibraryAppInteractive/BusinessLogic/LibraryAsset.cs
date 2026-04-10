@@ -47,8 +47,7 @@ namespace BusinessLogic
 
         public bool IsAvailable
         {
-            get { return true; } //TODO: Create logic for getter and setters
-            //get { if _status.ToString() == "Available") => true; }
+            get { return _status == AssetStatus.Available; }
         } 
         
     }

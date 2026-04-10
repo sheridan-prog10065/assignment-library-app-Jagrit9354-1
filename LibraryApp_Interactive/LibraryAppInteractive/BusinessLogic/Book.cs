@@ -63,38 +63,101 @@ namespace BusinessLogic
                 if (value == null)
                     throw new ArgumentNullException();
 
-                //_libAssetList = (LibraryAsset)_libAssetList.Add(value);
+                //_libAssetList.Add(value);
             }
         }
 
-        public void CheckAvailability( bool LibraryAsset) 
+        public (bool, DateTime) CheckAvailability( )
         {
-            //TODO: Check if the book object is available in the collection
+            foreach (LibraryAsset asset in Assets)
+            {
+                if (asset.IsAvailable)
+                {
+                    return (true, DateTime.MinValue);
+                }
+            }
+
+            // no available asset found - find the earliest due date
+            DateTime earliestDueDate = DateTime.MaxValue;
+            foreach (LibraryAsset asset in _libAssetList)
+            {
+                if (asset.Loan.DueDate < earliestDueDate)
+                    earliestDueDate = asset.Loan.DueDate;
+            }
+
+            return (false, earliestDueDate);
         }
 
-        public virtual void BorrowBook()
+        public virtual LibraryAsset BorrowBook() //Inherited by both book types B
         {
-            //TODO: Return a library asset object
+            //Find the next available asset
+            LibraryAsset asset = FindNextAvailableAsset();
+
+            //If not available throw exception
+            if (asset == null) 
+            {
+                throw new Exception("No available copies.");
+            }
+            //Initialize a loan (Implement in the Inherited Classes)
+
+            //Mark the asset as loaned
+            asset.Status = AssetStatus.Loaned;
+            return asset;
         }
 
-        public virtual void ReturnBook(int libID)
+        public virtual (TimeSpan, int, decimal) ReturnBook(int libID) //Inherited by both booktypes 
         {
-            //TODO: return (TimeSpan, int, decimal)
+            LibraryAsset asset = FindLibraryAsset(libID);
+
+            if (asset == null)
+            {
+                throw new Exception($"No asset found with the {libID}.");
+            }
+            if(asset.Status != AssetStatus.Loaned)
+            {
+                throw new Exception($"Asset {libID} is not currently on loan.");
+            }
+
+            //Mark the status of the book as available again
+            asset.Status = AssetStatus.Available;
+
+            //Calculate the loan duration
+            TimeSpan loanDuration = asset.Loan.LoanDuration;
+            int daysLate = (int)asset.Loan.LatePeriod.TotalDays;
+            daysLate = daysLate < 0 ? 0: daysLate;
+
+            //Return the tuple
+            return (loanDuration, daysLate, 0);
         }
 
-        public void ReserveBook()
+        public void ReserveBook() //I don't think this is needed
         {
             //TODO: return a library asset object
         }
 
-        private void findLibraryAsset(int libID)
+        private LibraryAsset FindLibraryAsset(int libID) //Needed for returning a book 
         {
-            //TODO: return a library asset object
+            foreach(LibraryAsset asset in _libAssetList)
+            {
+                if(asset.LibID == libID)
+                {
+                    return asset;
+                }
+            }
+            return null;
         }
 
-        private void findNextAvailableAsset() 
+        private LibraryAsset FindNextAvailableAsset()  
         {
-            //TODO: return a library asset object
+            foreach (LibraryAsset asset in _libAssetList)
+            {
+                if (asset.IsAvailable)
+                {
+                    return asset;
+                }
+                
+            }
+            return null;
         }
 
 

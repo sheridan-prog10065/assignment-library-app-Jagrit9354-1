@@ -33,14 +33,14 @@ namespace BusinessLogic
             set { _dueDate = value; }
         }
 
-        public string LoanDuration 
+        public TimeSpan LoanDuration
         {
-            get { return $"The book was borrowed from:{_borrowedOn} till:{_returnedOn}"; }
+            get { return  DateTime.Now - _borrowedOn; }
         }
 
         public TimeSpan LatePeriod
         {
-            get { return TimeSpan.Zero; } //TODO: create logic for getter and setter
+            get { return DateTime.Now - _dueDate; }
         }
 
     }

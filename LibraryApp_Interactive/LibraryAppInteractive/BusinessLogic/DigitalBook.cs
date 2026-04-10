@@ -9,7 +9,7 @@ namespace BusinessLogic
     public class DigitalBook : Book
     {
         private int _maxBorrowDays;
-        private float _latePenaltyPerDay;
+        private decimal _latePenaltyPerDay = 12.23M;
 
 
         public DigitalBook(string bookName, string bookISBN) : base(bookName, bookISBN)
@@ -22,14 +22,25 @@ namespace BusinessLogic
             //TODO: determine the loan license
         }
 
-        public override void BorrowBook() 
+        public override LibraryAsset BorrowBook()  
         {
-            //TODO: Override the borrowing functionality for a book
+            LibraryAsset asset = base.BorrowBook();
+
+            LoanPeriod loan = new LoanPeriod(DateTime.Now, DateTime.MinValue);
+            loan.DueDate = DateTime.Now.AddDays(_maxBorrowDays);
+            asset.Loan = loan;
+            return asset;
         }
 
-        public override void ReturnBook(int libID) 
+        public override (TimeSpan, int, decimal) ReturnBook(int libID) 
         {
-            //TODO: return: timespan, int, decimal
+            (TimeSpan loanDuration, int daysLate, decimal _) = base.ReturnBook(libID);
+
+            //Calculate late fees and charge the fine
+            decimal lateFees = daysLate + _latePenaltyPerDay;
+
+            //Return the tuple
+            return (loanDuration, daysLate, lateFees);
         }
 
 
