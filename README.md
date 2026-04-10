@@ -40,23 +40,23 @@ A GUI-based Library Management application built with C# and .NET MAUI. The app 
 ## Part III – Screenshots
 
 ### Browse Page – Search
-![Search Page](screenshots/search.png)  
+![Search Page](screenshots/search.PNG)  
 The client enters a book name or ISBN and clicks Search. The matching book's assets are displayed in the list below showing each asset ID and availability status.
 
 ### Browse Page – Borrow
-![Borrow Page](screenshots/borrow.png)  
+![Borrow Page](screenshots/borrow.PNG)  
 After selecting a book the client clicks Borrow. The app confirms the loan, shows the due date, and displays the library ID to use when returning.
 
 ### Browse Page – Return
-![Return Page](screenshots/return.png)  
+![Return Page](screenshots/return.PNG)  
 The client enters the library ID and clicks Return. The app confirms the return, shows the loan duration, and displays any applicable late fees.
 
 ### Admin Page – Register Book
-![Admin Page](screenshots/admin.png)  
+![Admin Page](screenshots/admin.PNG)  
 The administrator enters book details, selects the book type, and specifies the number of copies. Clicking Register Book adds the book and its assets to the library inventory.
 
 ### Admin Page – Display Assets
-![Display Assets](screenshots/assets.png)  
+![Display Assets](screenshots/assets.PNG)  
 The administrator clicks Display Assets to view all current assets across all books in the library inventory.
 
 ---
