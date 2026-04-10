@@ -3,8 +3,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LibraryAppInteractive.LibraryBrowsePage"
              Title="Browse Interactive Library">
-			 
-	<Label Text="Browse Library page for the Interactive Library App"
-	       HorizontalOptions="Center"
-	       VerticalOptions="Center"/> 
+
+    <Grid RowDefinitions="Auto, Auto, *"
+          Margin="20,0"
+          RowSpacing="10">
+
+        <!-- Search Section -->
+        <VerticalStackLayout Spacing="10">
+
+            <Label Text="Browse Library" FontSize="24"
+                   Margin="0,20,0,0"/>
+
+            <Label Text="Book Name:" FontSize="14"/>
+            <Entry x:Name="_txtSearchName"
+                   Placeholder="Enter book name" FontSize="17"/>
+
+            <Label Text="ISBN:" FontSize="14"/>
+            <Entry x:Name="_txtSearchISBN"
+                   Placeholder="Enter ISBN" FontSize="17"/>
+
+            <Label Text="Library ID (for return):" FontSize="14"/>
+            <Entry x:Name="_txtLibraryID"
+                   Placeholder="Enter library ID"
+                   Keyboard="Numeric" FontSize="17"/>
+
+            <Grid ColumnDefinitions="*, Auto, Auto"
+                  Margin="0,10"
+                  ColumnSpacing="10">
+                <Button Text="Search Book"
+                        Grid.Column="0"
+                        HorizontalOptions="Start"
+                        WidthRequest="200"
+                        Clicked="OnSearchBook"/>
+                <Button Text="Borrow Book"
+                        Grid.Column="1"
+                        WidthRequest="200"
+                        Clicked="OnBorrowBook"/>
+                <Button Text="Return Book"
+                        Grid.Column="2"
+                        WidthRequest="200"
+                        Clicked="OnReturnBook"/>
+            </Grid>
+
+        </VerticalStackLayout>
+
+        <!-- Results Header -->
+        <Label Text="Search Results" FontSize="24"
+               Grid.Row="1"/>
+
+        <!-- Results List -->
+        <Border Grid.Row="2"
+                Margin="{OnPlatform Default='0,0,0,80',
+                                    iOS='0,0,0,30',
+                                    Android='0,0,0,10'}">
+            <CollectionView x:Name="_lstSearchResults"
+                            HorizontalOptions="Fill"/>
+        </Border>
+
+    </Grid>
 </ContentPage>
